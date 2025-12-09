@@ -1,0 +1,78 @@
+/* Lazy Loading Styles */
+/* 대전 오월드 랜딩 페이지 리뉴얼 */
+
+/* ============================================
+   Lazy Image States
+   ============================================ */
+
+img[data-src] {
+  opacity: 0;
+  transition: opacity var(--transition-speed) var(--transition-easing);
+  background-color: var(--color-gray-100);
+}
+
+img[data-src].loaded {
+  opacity: 1;
+}
+
+img[data-src].load-error {
+  opacity: 0.5;
+  background-color: var(--color-gray-200);
+}
+
+/* ============================================
+   Loading Placeholder (Optional Blur-up)
+   ============================================ */
+
+.lazy-placeholder {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+}
+
+.lazy-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-gray-100) 0%,
+    var(--color-gray-200) 50%,
+    var(--color-gray-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.lazy-placeholder img {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   Blur-up Effect (Low-quality placeholder)
+   ============================================ */
+
+img[data-src].blur-up {
+  filter: blur(10px);
+  transform: scale(1.05);
+}
+
+img[data-src].blur-up.loaded {
+  filter: blur(0);
+  transform: scale(1);
+  transition: all 0.5s var(--transition-easing);
+}

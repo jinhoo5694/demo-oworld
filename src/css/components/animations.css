@@ -1,0 +1,253 @@
+/* Scroll Animations */
+/* 대전 오월드 랜딩 페이지 리뉴얼 */
+
+/* ============================================
+   Base Animation States
+   ============================================ */
+
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.6s var(--transition-easing),
+              transform 0.6s var(--transition-easing);
+}
+
+[data-animate].animate-in {
+  opacity: 1;
+}
+
+/* ============================================
+   Animation Types
+   ============================================ */
+
+/* Fade In */
+[data-animate="fade"] {
+  opacity: 0;
+}
+
+[data-animate="fade"].animate-in {
+  opacity: 1;
+}
+
+/* Fade In Up */
+[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+[data-animate="fade-up"].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In Down */
+[data-animate="fade-down"] {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+[data-animate="fade-down"].animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In Left */
+[data-animate="fade-left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+[data-animate="fade-left"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade In Right */
+[data-animate="fade-right"] {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+[data-animate="fade-right"].animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale In */
+[data-animate="scale"] {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+[data-animate="scale"].animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Zoom In */
+[data-animate="zoom"] {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+[data-animate="zoom"].animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Rotate In */
+[data-animate="rotate"] {
+  opacity: 0;
+  transform: rotate(-10deg) scale(0.9);
+}
+
+[data-animate="rotate"].animate-in {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* ============================================
+   Animation Delays (Stagger Effect)
+   ============================================ */
+
+[data-animate][data-animate-delay="100"] {
+  transition-delay: 100ms;
+}
+
+[data-animate][data-animate-delay="200"] {
+  transition-delay: 200ms;
+}
+
+[data-animate][data-animate-delay="300"] {
+  transition-delay: 300ms;
+}
+
+[data-animate][data-animate-delay="400"] {
+  transition-delay: 400ms;
+}
+
+[data-animate][data-animate-delay="500"] {
+  transition-delay: 500ms;
+}
+
+[data-animate][data-animate-delay="600"] {
+  transition-delay: 600ms;
+}
+
+/* ============================================
+   Utility Animations (Keyframes)
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s var(--transition-easing);
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s var(--transition-easing);
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s var(--transition-easing);
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s var(--transition-easing);
+}
+
+.animate-bounce {
+  animation: bounce 1s ease infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease;
+}
+
+/* ============================================
+   Performance Optimization
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate].animate-in {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

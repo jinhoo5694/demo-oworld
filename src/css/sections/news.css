@@ -1,0 +1,188 @@
+/* News & Notice Section */
+/* 대전 오월드 랜딩 페이지 리뉴얼 - 롯데월드 스타일 */
+
+/* ============================================
+   News List
+   ============================================ */
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.news-item {
+  border-bottom: 1px solid var(--color-gray-100);
+  transition: all var(--transition-speed-fast) ease;
+  position: relative;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+  transition: width var(--transition-speed-fast) ease;
+}
+
+.news-item:hover {
+  background-color: var(--color-gray-50);
+}
+
+.news-item:hover::before {
+  width: 4px;
+}
+
+.news-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  text-decoration: none;
+  color: inherit;
+  gap: var(--spacing-xl);
+  transition: all var(--transition-speed-fast) ease;
+  position: relative;
+}
+
+.news-date-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  position: relative;
+  min-width: 180px;
+}
+
+.news-date-wrapper::after {
+  content: '→';
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity var(--transition-speed-fast) ease;
+  margin-left: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.news-item:hover .news-date-wrapper::after {
+  opacity: 1;
+}
+
+.news-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.news-title-text {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-900);
+  transition: color var(--transition-speed-fast) ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news-link:hover .news-title-text {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.news-date {
+  color: var(--color-gray-500);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ============================================
+   More Button
+   ============================================ */
+
+.news-more {
+  text-align: center;
+  margin-top: var(--spacing-3xl);
+}
+
+.news-more .btn {
+  min-width: 180px;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  font-size: var(--font-size-large);
+  border-radius: var(--border-radius-full);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 767px) {
+  .news-list {
+    border-radius: var(--border-radius-lg);
+  }
+
+  .news-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .news-link::after {
+    display: none;
+  }
+
+  .news-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    width: 100%;
+  }
+
+  .news-title-text {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: var(--font-size-body);
+  }
+
+  .news-date {
+    align-self: flex-start;
+    font-size: var(--font-size-small);
+    text-align: left;
+    min-width: auto;
+  }
+
+  .news-more .btn {
+    min-width: 140px;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: var(--font-size-body);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .news-link {
+    padding: var(--spacing-lg) var(--spacing-xl);
+  }
+
+  .news-title-text {
+    font-size: var(--font-size-body);
+  }
+
+  .news-date {
+    font-size: var(--font-size-small);
+  }
+}

@@ -1,0 +1,362 @@
+/* Hero Slider Section */
+/* 대전 오월드 랜딩 페이지 리뉴얼 */
+
+/* ============================================
+   Hero Container
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  overflow: hidden;
+  background-color: var(--color-gray-900);
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    height: 55vh;
+    min-height: 450px;
+    max-height: 550px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    height: 60vh;
+    min-height: 500px;
+    max-height: 650px;
+  }
+}
+
+/* ============================================
+   Slider Container
+   ============================================ */
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   Slides
+   ============================================ */
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed-slow) var(--transition-easing);
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ============================================
+   Content Overlay
+   ============================================ */
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: var(--color-white);
+  width: 90%;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: var(--spacing-2xl);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+  opacity: 0.95;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: var(--spacing-lg) var(--spacing-3xl);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--border-radius-full);
+  text-decoration: none;
+  transition: all var(--transition-speed) var(--transition-easing);
+  box-shadow: 0 8px 24px rgba(255, 20, 147, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(255, 20, 147, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-cta:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.hero-cta:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   Slider Controls
+   ============================================ */
+
+.hero-controls {
+  position: absolute;
+  bottom: var(--spacing-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .hero-controls {
+    bottom: var(--spacing-3xl);
+  }
+}
+
+/* Navigation Arrows */
+.hero-prev,
+.hero-next {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.hero-prev:hover,
+.hero-next:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--color-white);
+}
+
+.hero-prev:focus-visible,
+.hero-next:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Side Arrows (Desktop) */
+.hero-arrow-left,
+.hero-arrow-right {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hero-arrow-left,
+  .hero-arrow-right {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-easing);
+  }
+
+  .hero-arrow-left {
+    left: var(--spacing-2xl);
+  }
+
+  .hero-arrow-right {
+    right: var(--spacing-2xl);
+  }
+
+  .hero-arrow-left:hover,
+  .hero-arrow-right:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: var(--color-white);
+  }
+}
+
+/* ============================================
+   Indicators (Dots)
+   ============================================ */
+
+.hero-indicators {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.hero-indicator.active {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  transform: scale(1.2);
+}
+
+.hero-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-indicator:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Play/Pause Button (Accessibility)
+   ============================================ */
+
+.hero-play-pause {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.hero-play-pause:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--color-white);
+}
+
+.hero-play-pause:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+
+.hero-slide.loading img {
+  filter: blur(10px);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   Overlay Gradient (Optional)
+   ============================================ */
+
+.hero-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 767px) {
+  .hero-content {
+    width: 85%;
+  }
+
+  .hero-title {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-subtitle {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-cta {
+    padding: var(--spacing-md) var(--spacing-2xl);
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "daejeon-oworld-v2",
+  "version": "2.0.0",
+  "description": "대전 오월드 랜딩 페이지 리뉴얼",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "live-server src --port=8000 --open=/index.html",
+    "start": "npm run dev",
+    "serve": "http-server src -p 8000 -o",
+    "build": "echo 'No build process needed for vanilla JS project'",
+    "test": "echo 'No tests configured yet'"
+  },
+  "keywords": [
+    "oworld",
+    "daejeon",
+    "landing-page",
+    "vanilla-js"
+  ],
+  "author": "Daejeon O'World",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

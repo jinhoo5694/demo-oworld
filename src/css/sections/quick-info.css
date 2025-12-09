@@ -1,0 +1,68 @@
+/* Quick Info Section */
+/* 대전 오월드 랜딩 페이지 리뉴얼 */
+
+.quick-info {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-2xl) 0;
+}
+
+.quick-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .quick-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .quick-info-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.quick-info-card {
+  background-color: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.quick-info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.quick-info-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.quick-info-title {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-800);
+  margin-bottom: var(--spacing-sm);
+}
+
+.quick-info-content {
+  font-size: var(--font-size-body);
+  color: var(--color-gray-600);
+}
+
+.quick-info-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+}
+
+.quick-info-link:hover {
+  text-decoration: underline;
+}
