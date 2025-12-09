@@ -34,6 +34,17 @@
   margin-bottom: var(--spacing-md);
 }
 
+.footer-logo-image {
+  height: 150px;
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .footer-logo-image {
+    height: 110px;
+  }
+}
+
 .footer-description {
   color: var(--color-gray-400);
   line-height: var(--line-height-relaxed);
