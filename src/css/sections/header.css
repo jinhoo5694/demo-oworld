@@ -6,8 +6,7 @@
    ============================================ */
 
 .header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: var(--z-index-sticky);
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);

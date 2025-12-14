@@ -1,14 +1,18 @@
 /* Demo Banner Component */
 /* 대전 오월드 랜딩 페이지 리뉴얼 - 데모 안내 배너 */
 
+/* Sticky Header Wrapper - 데모 배너와 헤더를 함께 고정 */
+.sticky-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+
 .demo-banner {
   background-color: #FFF9E6;
   border-bottom: 2px solid #FFD700;
   padding: var(--spacing-md) 0;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1001;
 }
 
 .demo-banner-text {
